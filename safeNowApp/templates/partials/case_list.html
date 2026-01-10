@@ -1,0 +1,39 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+</head>
+<body>
+    {% for case in cases %}
+    <article class="bg-white border border-gray-100 rounded-xl shadow-sm p-5 flex justify-between">
+        <div>
+            <h3 class="font-semibold">{{ case.title }}</h3>
+            <p class="text-gray-500 text-sm mt-2">
+                <img src="{% static 'images/location.png' %}" class="w-8 h-8 inline-block" alt="">
+                {{ case.location }}
+                • <img src="{% static 'images/time.png' %}" class="w-8 h-8 inline-block" alt="">
+                {{ case.created_at|timesince }} ago
+            </p>
+            <p class="text-sm mt-2">{{ case.description }}</p>
+            <div class="flex items-center space-x-1">
+                <span class="material-icons">warning</span>
+                <p class="text-sm mt-3">{% trans "Danger Level:" %} {{ case.status }}</p>
+            </div>
+        </div>
+        <div class="text-right">
+            {% if case.qr_code %}
+            <img src="{{case.qr_code.url}}" class="w-16 h-16">
+            {% endif %}
+            <p class="text-xs text-gray-400 mt-1">{% trans "Case #" %}{{ case.id }}</p>
+        </div>
+    </article>
+    {% empty %}
+    <p class="text-gray-500 text-sm">No cases found.</p>
+    {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+
+<html lang="{{ LANGUAGE_CODE }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "About | Smart Rescue" %} </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=heart_arrow"/>
+
+</head>
+
+<body class="bg-[##fafbfd]">
+     <nav class="bg-gradient-to-r from-red-500 to-pink-800 text-white shadow sticky top-0 z-50">
+  <div class=" mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center space-x-3">
+        <img src="{% static 'images/Logo.png' %}" alt="WAHA Logo" class="w-12 h-12 rounded-xl">
+        <a href="/dashboard" class="font-semibold text-2xl">{% trans "Smart Rescue" %}</a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex md:items-center md:space-x-5 text-lg">
+        <a href="/dashboard" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">home</span>
+          <span>{% trans "Dashboard" %}</span>
+        </a>
+        <a href="/create_case" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">add</span>
+          <span>{% trans "Create Case" %}</span>
+        </a>
+        {% if user.role == "volunteer" %}
+        <a href="/volunteer" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">volunteer_activism</span>
+          <span>{% trans "Volunteer" %}</span>
+        </a>
+        {% endif %}
+        <a href="{% url 'my_cases' %}" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">list</span>
+          <span>{% trans "My Cases" %}</span>
+        </a>
+        <a href="/services" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-symbols-outlined">heart_arrow</span>
+          <span>{% trans "Services" %}</span>
+        </a>
+
+        <!-- Language Dropdown -->
+            <div class="relative group language-menu" onmouseenter="initLanguageMenu()">
+          <button class="flex items-center space-x-1 hover:text-gray-300">
+            <span class="material-icons">language</span>
+            <span>{% trans "Language" %}</span>
+          </button>
+          <ul class="dropdown absolute left-0 mt-1 hidden group-hover:block bg-white text-black rounded shadow-lg w-40 z-10">
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="en">
+                <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-200">English</button>
+              </form>
+            </li>
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="ar">
+                <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-200">العربية</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+
+        <a href="{% url 'about' %}" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">info</span>
+          <span>{% trans "About Us" %}</span>
+        </a>
+        <a href="/logoutform" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">logout</span>
+          <span>{% trans "Logout" %}</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="focus:outline-none">
+          <span class="material-icons">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-gradient-to-r from-red-500 to-pink-800 text-white">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="/dashboard" class="block px-3 py-2 rounded hover:bg-red-600">Dashboard</a>
+      <a href="/create_case" class="block px-3 py-2 rounded hover:bg-red-600">Create Case</a>
+      {% if user.role == "volunteer" %}
+      <a href="/volunteer" class="block px-3 py-2 rounded hover:bg-red-600">Volunteer</a>
+      {% endif %}
+      <a href="{% url 'my_cases' %}" class="block px-3 py-2 rounded hover:bg-red-600">My Cases</a>
+      <a href="/services" class="block px-3 py-2 rounded hover:bg-red-600">Services</a>
+      <a href="{% url 'about' %}" class="block px-3 py-2 rounded hover:bg-red-600">About Us</a>
+      <a href="/logoutform" class="block px-3 py-2 rounded hover:bg-red-600">Logout</a>
+    </div>
+  </div>
+
+  <script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</nav>
+
+
+    <section class="bg-gradient-to-r from-red-500 to-pink-800  text-white text-center py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <img src="{% static 'images/logo.png' %}" alt="Smart Rescue Logo" class="mx-auto mb-6 w-16">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-3">{% trans "About Smart Rescue" %}</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto">{% trans "Empowering communities to report and respond to working at height emergencies with speed, precision, and care." %} </p>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 py-16">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 px-6">
+            <div class="md:w-1/2">
+                <h3 class="text-lg font-semibold mb-4 text-gray-900">{% trans "Our Mission" %}</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">{% trans "At Smart Rescue, our mission is to make emergency reporting simple, fast, and accessible for everyone. We aim to bridge the gap between citizens and emergency services by providing an intelligent platform that allows users to report incidents, upload images, and even describe cases via voice, while automatically connecting them to the appropriate authorities." %} </p>
+                <p class="text-gray-700 leading-relaxed">{%trans "We believe that every second counts in emergency situations. Our platform leverages modern technology to streamline case reporting,coordinate volunteer responders, and provide real-time updates to ensure rapid and effective rescue operations." %}</p>
+            </div>
+
+            <div class="md:w-1/2 bg-white border border-gray-200 rounded-lg shadow-md p-6">
+                <h4 class="text-lg font-semibold mb-4 text-gray-900">{% trans "What We Do" %}</h4>
+                <br>
+                <ul>
+                    <li>{% trans "Emergency Response Coordination <p>Connect citizens with specialized rescue authorities instantly" %}</p>
+                    </li>
+                    <br>
+                    <li>{% trans "Volunteer Network" %}
+
+                        <p>{% trans "Build a community of trained volunteers ready to assist" %}</p>
+                    </li>
+                    <br>
+                    <li>{% trans "Precise Location Tracking" %}
+
+                        <p>{% trans "GPS and map integration for accurate incident reporting" %}</p>
+                    </li>
+
+                </ul>
+                <ul class="space-y-4 text-gray-700">
+                    {% for item in what_we_do %}
+                    <li>
+                        <div class="flex items-start gap-3">
+                            <div class="text-blue-600 text-xl">{{ item.icon }}</div>
+                            <div>
+                                <p class="font-semibold">{{ item.title }}</p>
+                                <p class="text-sm text-gray-500">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-red-500 to-pink-800 text-white py-16">
+        <div class="max-w-5xl mx-auto text-center">
+            <h4 class="text-xl font-semibold mb-10">{% trans "Platform Features" %}</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {% for feature in features %}
+                <div>
+                    <div class="text-4xl mb-3">{{ feature.icon }}</div>
+                    <h5 class="font-semibold">{{ feature.title }}</h5>
+                    <p class="text-gray-300 text-sm mt-2">{{ feature.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 py-16">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h4 class="text-xl font-semibold mb-10 text-gray-900">{% trans "Our Core Values" %}</h4>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                {% for value in core_values %}
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5">
+                    <h5 class="font-semibold mb-2">{{ value.title }}</h5>
+                    <p class="text-sm text-gray-600">{{ value.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-red-500 to-pink-800 text-white text-center py-16">
+        <div class="max-w-4xl mx-auto px-6">
+            <h4 class="text-xl font-semibold mb-3">{% trans "Join Us in Making a Difference" %}</h4>
+            <p class="text-gray-300 mb-8">
+                {% trans "Whether you need assistance or want to volunteer, Smart Rescue connects you to a network dedicated to saving lives." %} </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <div>
+                    <a href="{% url 'create_case' %}"
+                       class="bg-white text-[#04364A] font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition">
+                        {% trans "Report a Case" %}
+                    </a>
+                </div>
+                <div>
+
+                    <a href="{% url 'Become_a_volunteer' %}"
+                       class="bg-white text-[#04364A] font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition">
+                        {% trans "Become a Volunteer" %}
+                    </a>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'script.js' %}"></script>
+
+</body>
+
+</html>

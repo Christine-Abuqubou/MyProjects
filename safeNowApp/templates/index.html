@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Smart Rescue App</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-['Roboto']">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl flex overflow-hidden">
+
+            <!-- Branding Section -->
+            <div class="hidden md:flex w-1/2 flex-col justify-between bg-gradient-to-r from-red-500 to-pink-500 p-12 text-white">
+                <div>
+                    <span class="material-icons text-5xl mb-4">emergency</span>
+                    <h1 class="text-4xl font-bold mb-6">Smart Rescue</h1>
+                    <p class="text-lg opacity-90">Your reliable emergency response system. Quick, efficient, and always
+                        ready.</p>
+                </div>
+                <br>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <span class="material-icons">verified_user</span>
+                        <p>Secure and confidential service</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="material-icons">speed</span>
+                        <p>Fast response time</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="material-icons">support_agent</span>
+                        <p>24/7 Emergency support</p>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <span class="material-icons">call</span>
+                        <p><a href="tel:+1234567890" class="text-white underline hover:text-red-200">+1234567890</a>
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Forms Section -->
+            <div class="w-full md:w-1/2 p-8 md:p-12">
+                {% if messages %}
+                <ul class="mb-6">
+                    {% for message in messages %}
+                    <li class="text-red-500">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <!-- LOGIN FORM -->
+                <div class="block" id="login">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Welcome </h2>
+                    <p class="text-gray-600 mb-6">Sign in to continue to Smart Rescue</p>
+                    <form action="{% url 'loginuserform' %}" method="post" class="space-y-4">
+                        {% csrf_token %}
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" name="email" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Enter your email">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" name="password" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Enter your password">
+                        </div>
+                        <button type="submit"
+                                class="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-md font-medium shadow-lg hover:shadow-xl">
+                            Sign In
+                        </button>
+                    </form>
+                    <p class="text-center mt-4">Don't have an account? <a href="#register"
+                                                                          class="text-pink-500 font-bold" id="show-register">Create
+                        Account</a></p>
+                </div>
+
+                <!-- REGISTER FORM -->
+                <div class="hidden" id="register">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Create Account</h2>
+                    <p class="text-gray-600 mb-6">Join Smart Rescue today!</p>
+                    <form action="{% url 'createuserform' %}" method="post" class="space-y-4">
+                        {% csrf_token %}
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">First Name</label>
+                            <input type="text" name="firstname" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Enter your first name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Last Name</label>
+                            <input type="text" name="lastname" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Enter your last name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" name="email" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Enter your email">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="text" name="phonenumber" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Enter your phone number">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Address</label>
+                            <input type="text" name="address" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Enter your address">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                            <input type="date" name="DOB" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" name="password" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Enter your password">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                            <input type="password" name="confirmpassword" required
+                                   class="w-full px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500"
+                                   placeholder="Confirm your password">
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label for="user" class="block text-sm font-medium text-gray-700 mr-4">User</label>
+                            <input type="radio" id="user" name="role" value="user" required
+                                   class=" w-4 h-4 px-4 py-3  rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500">
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label for="volunteer"
+                                   class="block text-sm font-medium text-gray-700 mr-4">Volunteer</label>
+                            <input type="radio" id="volunteer" value="volunteer" name="role" required
+                                   class=" w-4 h-4 px-4 py-3 rounded-md border-2 border-gray-200 focus:ring-2 focus:ring-pink-500">
+                        </div>
+                        <button type="submit"
+                                class="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-md font-medium shadow-lg hover:shadow-xl">
+                            Register
+                        </button>
+                    </form>
+                    <p class="text-center mt-4">Already have an account? <a href="#login"
+                                                                            class="text-pink-500 font-bold" id="show-login">Sign In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CSS-only toggle using :target -->
+    <script>
+        document.getElementById('show-register').addEventListener('click', () => {
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('register').classList.remove('hidden');
+        });
+
+        document.getElementById('show-login').addEventListener('click', () => {
+            document.getElementById('register').classList.add('hidden');
+            document.getElementById('login').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

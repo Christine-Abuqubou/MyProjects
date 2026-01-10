@@ -1,0 +1,10 @@
+/smart_rescue/safeNowApp/migrations/
+/db.sqlite3
+/.venv/
+/.idea/
+__pycache__/
+*.pyc
+/smart_rescue/.env
+/smart_rescue/db.sqlite3
+/.env
+/safeNowApp/migrations/

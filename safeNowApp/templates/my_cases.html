@@ -1,0 +1,162 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "My Cases" %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        [id^="map-"] {
+            z-index: 1 !important;
+        }
+
+        #fullmap {
+            z-index: 9998 !important;
+        }
+
+        #fullmap-overlay {
+            z-index: 9999 !important;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-gradient-to-r from-red-500 to-pink-700 text-white py-6 px-8 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">{% trans "Your Reported Cases" %}</h1>
+        <a href="{% url 'dashboard' %}"
+           class="bg-white text-red-600 font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+            {% trans "Back to Dashboard" %}
+        </a>
+    </header>
+
+    <main class="max-w-6xl mx-auto mt-8 px-6">
+        <h2 class="text-2xl font-semibold mb-6">{% trans "Your Cases" %}</h2>
+
+        {% if cases %}
+        <div class="grid md:grid-cols-2 gap-6">
+            {% for case in cases %}
+            <div class="bg-white border border-gray-200 rounded-xl shadow p-5">
+                <p>{{case.created_by.firstname}} {{case.created_by.lastname}}</p>
+                <h3 class="font-semibold text-lg">{{ case.title }}</h3>
+                <p class="text-gray-600 text-sm mt-1">{{ case.description }}</p>
+
+
+                <div
+                        id="map-{{ forloop.counter }}"
+                        class="h-40 mt-4 rounded-lg cursor-pointer"
+                        data-lat="{{ case.lat }}"
+                        data-lng="{{ case.long }}">
+                </div>
+
+
+                <!-- Case Info -->
+                <div class="mt-3 text-sm text-gray-500">
+                    <p><strong>{% trans "Category" %}:</strong> {{ case.category }}</p>
+                    <p><strong>{% trans "Created at" %}:</strong> {{ case.created_at|date:"Y-m-d H:i" }}</p>
+                </div>
+
+                <!-- Case Status -->
+                <div class="mt-4">
+                    {% if case.current_status == 'PENDING' %}
+                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-medium">{% trans "Pending" %}</span>
+                    {% elif case.current_status == 'ACCEPTED' %}
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">{% trans "Accepted" %}</span>
+                    {% elif case.current_status == 'REJECTED' %}
+                    <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium">{% trans "Rejected" %}</span>
+                    {% else %}
+                    <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs font-medium">{% trans "Unknown" %}</span>
+                    {% endif %}
+                    {% if user.role != "user" and user.role != "volunteer" %}
+                    {% if case.current_status == 'PENDING' %}
+                    <form action="/change_status/{{case.id}}" method="post">
+                        {% csrf_token %}
+                        <div class="flex space-x-2 mt-5">
+                            <button type="submit" name="chaneStatus" value="accept"
+                                    class="bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition"
+                            >Accept
+                            </button>
+                            <button type="submit" name="chaneStatus" value="decline"
+                                    class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition"
+                            >Decline
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-gray-500 mt-10 text-center text-lg">{% trans "You have no cases or you are not logged in." %}</p>
+        {% endif %}
+    </main>
+
+    <div id="fullmap-overlay" class="fixed inset-0 hidden z-[9999]">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="bg-white rounded-xl w-11/12 h-5/6 relative shadow-2xl overflow-hidden">
+                <button id="close-fullmap"
+                        class="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-lg z-[10000] hover:bg-red-600">
+                    ✕
+                </button>
+                <div id="fullmap" class="w-full h-full rounded-lg z-[9998]"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mapDivs = document.querySelectorAll("[id^='map-']");
+            let fullMap, fullMarker;
+
+            mapDivs.forEach(div => {
+                const lat = parseFloat(div.dataset.lat);
+                const lng = parseFloat(div.dataset.lng);
+
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    const miniMap = L.map(div.id, {
+                        zoomControl: false,
+                        attributionControl: false,
+                    }).setView([lat, lng], 13);
+
+                    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(miniMap);
+                    L.marker([lat, lng]).addTo(miniMap);
+                }
+
+                div.addEventListener("click", () => {
+                    const overlay = document.getElementById("fullmap-overlay");
+                    overlay.classList.remove("hidden");
+
+                    if (!fullMap) {
+                        fullMap = L.map("fullmap").setView([lat, lng], 15);
+                        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(fullMap);
+                        fullMarker = L.marker([lat, lng]).addTo(fullMap);
+                    } else {
+                        fullMap.setView([lat, lng], 15);
+                        fullMarker.setLatLng([lat, lng]);
+                    }
+
+                    setTimeout(() => {
+                        fullMap.invalidateSize();
+                    }, 200);
+                });
+            });
+
+            document.getElementById("close-fullmap").addEventListener("click", () => {
+                const overlay = document.getElementById("fullmap-overlay");
+                overlay.classList.add("hidden");
+            });
+        });
+    </script>
+
+
+</body>
+</html>

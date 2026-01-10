@@ -1,0 +1,724 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-27 09:19+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\safeNowApp\templates\Dashboard.html:9
+msgid "Smart Rescue Dashboard"
+msgstr "لوحة تحكم الإنقاذ الذكي"
+
+#: .\safeNowApp\templates\Dashboard.html:22
+#: .\safeNowApp\templates\about.html:23
+#: .\safeNowApp\templates\create_case.html:41
+#: .\safeNowApp\templates\services.html:20
+#: .\safeNowApp\templates\volunteer.html:23
+msgid "Smart Rescue"
+msgstr "الإنقاذ الذكي"
+
+#: .\safeNowApp\templates\Dashboard.html:27
+#: .\safeNowApp\templates\about.html:28
+#: .\safeNowApp\templates\create_case.html:46
+#: .\safeNowApp\templates\services.html:25
+#: .\safeNowApp\templates\volunteer.html:28
+#, fuzzy
+msgid "home"
+msgstr "الرئيسية"
+
+#: .\safeNowApp\templates\Dashboard.html:28
+#: .\safeNowApp\templates\about.html:29
+#: .\safeNowApp\templates\create_case.html:47
+#: .\safeNowApp\templates\services.html:26
+#: .\safeNowApp\templates\volunteer.html:29
+msgid "Dashboard"
+msgstr "الصفحة الرئيسية"
+
+#: .\safeNowApp\templates\Dashboard.html:34
+#: .\safeNowApp\templates\about.html:35
+#: .\safeNowApp\templates\create_case.html:53
+#: .\safeNowApp\templates\services.html:32
+#: .\safeNowApp\templates\volunteer.html:35
+#, fuzzy
+msgid "add"
+msgstr "إضافة"
+
+#: .\safeNowApp\templates\Dashboard.html:35
+#: .\safeNowApp\templates\about.html:36
+#: .\safeNowApp\templates\create_case.html:8
+#: .\safeNowApp\templates\create_case.html:54
+#: .\safeNowApp\templates\services.html:33
+#: .\safeNowApp\templates\volunteer.html:36
+msgid "Create Case"
+msgstr "إنشاء بلاغ"
+
+#: .\safeNowApp\templates\Dashboard.html:42
+#: .\safeNowApp\templates\about.html:43
+#: .\safeNowApp\templates\create_case.html:61
+#: .\safeNowApp\templates\services.html:40
+#: .\safeNowApp\templates\volunteer.html:41
+#, fuzzy
+#| msgid "Volunteer Services"
+msgid "volunteer_activism"
+msgstr "خدمات المتطوعين"
+
+#: .\safeNowApp\templates\Dashboard.html:43
+#: .\safeNowApp\templates\about.html:44
+#: .\safeNowApp\templates\create_case.html:62
+#: .\safeNowApp\templates\services.html:41
+#: .\safeNowApp\templates\volunteer.html:11
+#: .\safeNowApp\templates\volunteer.html:42
+msgid "Volunteer"
+msgstr "التطوع"
+
+#: .\safeNowApp\templates\Dashboard.html:50
+#: .\safeNowApp\templates\about.html:51
+#: .\safeNowApp\templates\create_case.html:69
+#: .\safeNowApp\templates\my_cases.html:8
+#: .\safeNowApp\templates\my_services.html:17
+#: .\safeNowApp\templates\services.html:48
+#: .\safeNowApp\templates\volunteer.html:47
+msgid "My Cases"
+msgstr "بلاغاتي"
+
+#: .\safeNowApp\templates\Dashboard.html:54
+#: .\safeNowApp\templates\about.html:55
+#: .\safeNowApp\templates\create_case.html:73
+#: .\safeNowApp\templates\services.html:52
+#: .\safeNowApp\templates\volunteer.html:52
+msgid "heart_arrow"
+msgstr ""
+
+#: .\safeNowApp\templates\Dashboard.html:55
+#: .\safeNowApp\templates\about.html:56
+#: .\safeNowApp\templates\create_case.html:74
+#: .\safeNowApp\templates\services.html:53
+#: .\safeNowApp\templates\volunteer.html:53
+msgid "Services"
+msgstr " الخدمات"
+
+#: .\safeNowApp\templates\Dashboard.html:60
+#: .\safeNowApp\templates\about.html:62
+#: .\safeNowApp\templates\create_case.html:79
+#: .\safeNowApp\templates\services.html:58
+#: .\safeNowApp\templates\volunteer.html:58
+#, fuzzy
+#| msgid "Language"
+msgid "language"
+msgstr "اللغة"
+
+#: .\safeNowApp\templates\Dashboard.html:61
+#: .\safeNowApp\templates\about.html:63
+#: .\safeNowApp\templates\create_case.html:80
+#: .\safeNowApp\templates\services.html:59
+#: .\safeNowApp\templates\volunteer.html:59
+msgid "Language"
+msgstr "اللغة"
+
+#: .\safeNowApp\templates\Dashboard.html:89
+#: .\safeNowApp\templates\about.html:91
+#: .\safeNowApp\templates\create_case.html:108
+#: .\safeNowApp\templates\services.html:87
+#, fuzzy
+msgid "info"
+msgstr "معلومات"
+
+#: .\safeNowApp\templates\Dashboard.html:90
+#: .\safeNowApp\templates\about.html:92
+#: .\safeNowApp\templates\create_case.html:109
+#: .\safeNowApp\templates\services.html:88
+#: .\safeNowApp\templates\volunteer.html:87
+msgid "About Us"
+msgstr "من نحن"
+
+#: .\safeNowApp\templates\Dashboard.html:95
+#: .\safeNowApp\templates\about.html:97
+#: .\safeNowApp\templates\create_case.html:114
+#: .\safeNowApp\templates\services.html:93
+#: .\safeNowApp\templates\volunteer.html:92
+#, fuzzy
+#| msgid "Logout"
+msgid "logout"
+msgstr "تسجيل الخروج"
+
+#: .\safeNowApp\templates\Dashboard.html:96
+#: .\safeNowApp\templates\about.html:98
+#: .\safeNowApp\templates\create_case.html:115
+#: .\safeNowApp\templates\services.html:94
+#: .\safeNowApp\templates\volunteer.html:93
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: .\safeNowApp\templates\Dashboard.html:103
+msgid "Recent Cases Dashboard"
+msgstr "لوحة تحكم الإنقاذ الذكي"
+
+#: .\safeNowApp\templates\Dashboard.html:104
+msgid "Monitor and track reported cases in your community"
+msgstr "ابحث وقيّم خدمات المتطوعين في مجتمعك"
+
+#: .\safeNowApp\templates\Dashboard.html:116
+msgid "All Levels"
+msgstr "كل المستويات"
+
+#: .\safeNowApp\templates\Dashboard.html:126
+#: .\safeNowApp\templates\services.html:115
+msgid "All Categories"
+msgstr "كل الفئات"
+
+#: .\safeNowApp\templates\Dashboard.html:149
+#: .\safeNowApp\templates\partials\case_list.html:24
+msgid "Danger Level:"
+msgstr "مستوى الخطر"
+
+#: .\safeNowApp\templates\Dashboard.html:154
+#: .\safeNowApp\templates\partials\case_list.html:31
+msgid "Case #"
+msgstr "رقم البلاغ #"
+
+#: .\safeNowApp\templates\about.html:10
+msgid "About | Smart Rescue"
+msgstr "عن | الإنقاذ الذكي"
+
+#: .\safeNowApp\templates\about.html:108
+msgid "About Smart Rescue"
+msgstr "حول الإنقاذ الذكي"
+
+#: .\safeNowApp\templates\about.html:109
+msgid ""
+"Empowering communities to report and respond to working at height "
+"emergencies with speed, precision, and care."
+msgstr ""
+"تمكين المجتمعات من الإبلاغ والاستجابة لحالات الطوارئ المتعلقة بالعمل على "
+"ارتفاع بسرعة ودقة واهتمام."
+
+#: .\safeNowApp\templates\about.html:116
+msgid "Our Mission"
+msgstr "مهمتنا"
+
+#: .\safeNowApp\templates\about.html:117
+msgid ""
+"At Smart Rescue, our mission is to make emergency reporting simple, fast, "
+"and accessible for everyone. We aim to bridge the gap between citizens and "
+"emergency services by providing an intelligent platform that allows users to "
+"report incidents, upload images, and even describe cases via voice, while "
+"automatically connecting them to the appropriate authorities."
+msgstr ""
+"في Smart Rescue، مهمتنا هي جعل الإبلاغ عن حالات الطوارئ بسيطًا وسريعًا ومتاحة "
+"للجميع. نحن نهدف إلى سد الفجوة بين المواطنين وخدمات الطوارئ من خلال توفير "
+"منصة ذكية تتيح للمستخدمين الإبلاغ عن الحوادث، رفع الصور، وحتى وصف الحالات "
+"عبر الصوت، مع توصيلهم تلقائيًا بالجهات المختصة."
+
+#: .\safeNowApp\templates\about.html:118
+msgid ""
+"We believe that every second counts in emergency situations. Our platform "
+"leverages modern technology to streamline case reporting,coordinate "
+"volunteer responders, and provide real-time updates to ensure rapid and "
+"effective rescue operations."
+msgstr ""
+"نؤمن بأن كل ثانية مهمة في حالات الطوارئ. تعتمد منصتنا على التكنولوجيا "
+"الحديثة لتسهيل الإبلاغ عن الحالات، تنسيق المتطوعين المستجيبين، وتقديم "
+"تحديثات فورية لضمان عمليات إنقاذ سريعة وفعّالة."
+
+#: .\safeNowApp\templates\about.html:122
+msgid "What We Do"
+msgstr "ما نقوم به"
+
+#: .\safeNowApp\templates\about.html:125
+msgid ""
+"Emergency Response Coordination <p>Connect citizens with specialized rescue "
+"authorities instantly"
+msgstr ""
+"تنسيق الاستجابة للطوارئ <p>ربط المواطنين بالجهات المتخصصة في الإنقاذ على "
+"الفور"
+
+#: .\safeNowApp\templates\about.html:128
+msgid "Volunteer Network"
+msgstr "شبكة المتطوعين"
+
+#: .\safeNowApp\templates\about.html:130
+msgid "Build a community of trained volunteers ready to assist"
+msgstr "نبني مجتمعًا من المتطوعين المدربين المستعدين لتقديم المساعدة"
+
+#: .\safeNowApp\templates\about.html:133
+msgid "Precise Location Tracking"
+msgstr "تتبع الموقع بدقة"
+
+#: .\safeNowApp\templates\about.html:135
+msgid "GPS and map integration for accurate incident reporting"
+msgstr "دمج نظام GPS والخرائط لتحديد الموقع بدقة أثناء الإبلاغ"
+
+#: .\safeNowApp\templates\about.html:158
+msgid "Platform Features"
+msgstr "ميزات المنصة"
+
+#: .\safeNowApp\templates\about.html:173
+msgid "Our Core Values"
+msgstr "قيمنا الأساسية"
+
+#: .\safeNowApp\templates\about.html:187
+msgid "Join Us in Making a Difference"
+msgstr "انضم إلينا لإحداث فرق"
+
+#: .\safeNowApp\templates\about.html:189
+msgid ""
+"Whether you need assistance or want to volunteer, Smart Rescue connects you "
+"to a network dedicated to saving lives."
+msgstr ""
+"سواء كنت بحاجة إلى مساعدة أو ترغب في التطوع، يربطك Smart Rescue بشبكة مكرسة "
+"لإنقاذ الأرواح."
+
+#: .\safeNowApp\templates\about.html:194
+msgid "Report a Case"
+msgstr "أبلغ عن حالة"
+
+#: .\safeNowApp\templates\about.html:201
+#: .\safeNowApp\templates\volunteer.html:101
+msgid "Become a Volunteer"
+msgstr "كن متطوعًا"
+
+#: .\safeNowApp\templates\create_case.html:124
+msgid "Report a New Case"
+msgstr "أبلغ عن حالة جديدة"
+
+#: .\safeNowApp\templates\create_case.html:127
+msgid "Help your community by reporting issues that need attention"
+msgstr "ساعد مجتمعك بالإبلاغ عن الحالات التي تحتاج إلى تدخل"
+
+#: .\safeNowApp\templates\create_case.html:133
+msgid "Case Details"
+msgstr "وصف الحالة"
+
+#: .\safeNowApp\templates\create_case.html:135
+msgid "Fill in the information about the case you want to report"
+msgstr "املأ المعلومات حول الحالة التي ترغب في الإبلاغ عنها"
+
+#: .\safeNowApp\templates\create_case.html:144
+msgid "Case Title *"
+msgstr "عنوان الحالة"
+
+#: .\safeNowApp\templates\create_case.html:157
+msgid "Category *"
+msgstr "الفئة"
+
+#: .\safeNowApp\templates\create_case.html:163
+#: .\safeNowApp\templates\volunteer.html:159
+msgid "Select a category"
+msgstr "اختر فئة"
+
+#: .\safeNowApp\templates\create_case.html:164
+msgid "Kidnapping"
+msgstr "اختطاف"
+
+#: .\safeNowApp\templates\create_case.html:165
+msgid "Violence"
+msgstr "عنف"
+
+#: .\safeNowApp\templates\create_case.html:166
+msgid "Abuse"
+msgstr "إساءة"
+
+#: .\safeNowApp\templates\create_case.html:167
+msgid "Lost Child"
+msgstr "طفل مفقود"
+
+#: .\safeNowApp\templates\create_case.html:168
+msgid "Other"
+msgstr ""
+
+#: .\safeNowApp\templates\create_case.html:172
+msgid "Specialized Authorities *"
+msgstr "الجهات المختصة"
+
+#: .\safeNowApp\templates\create_case.html:178
+msgid "Select an authority type"
+msgstr "اختر نوع الجهة"
+
+#: .\safeNowApp\templates\create_case.html:179
+msgid "Police"
+msgstr "الشرطة"
+
+#: .\safeNowApp\templates\create_case.html:180
+msgid "Hospital"
+msgstr "المستشفى"
+
+#: .\safeNowApp\templates\create_case.html:181
+msgid "Municipality"
+msgstr "البلدية"
+
+#: .\safeNowApp\templates\create_case.html:182
+#: .\safeNowApp\templates\my_cases.html:73
+#: .\safeNowApp\templates\my_services.html:53
+msgid "Unknown"
+msgstr "غير معروف"
+
+#: .\safeNowApp\templates\create_case.html:190
+msgid "Location *"
+msgstr "الموقع"
+
+#: .\safeNowApp\templates\create_case.html:208
+msgid "Danger Level *"
+msgstr "مستوى الخطر"
+
+#: .\safeNowApp\templates\create_case.html:214
+msgid "Select The Status"
+msgstr "اختر الحالة"
+
+#: .\safeNowApp\templates\create_case.html:215
+msgid "Low"
+msgstr "منخفض"
+
+#: .\safeNowApp\templates\create_case.html:216
+msgid "Medium"
+msgstr "متوسط"
+
+#: .\safeNowApp\templates\create_case.html:217
+msgid "High"
+msgstr "مرتفع"
+
+#: .\safeNowApp\templates\create_case.html:243
+msgid "Describe the Case"
+msgstr "صف الحالة"
+
+#: .\safeNowApp\templates\create_case.html:246
+msgid "Text"
+msgstr "نص"
+
+#: .\safeNowApp\templates\create_case.html:249
+msgid "Voice"
+msgstr "صوت"
+
+#: .\safeNowApp\templates\create_case.html:252
+msgid "Image"
+msgstr "صورة"
+
+#: .\safeNowApp\templates\create_case.html:262
+msgid "Start Recording"
+msgstr "ابدأ التسجيل"
+
+#: .\safeNowApp\templates\create_case.html:264
+msgid "Not recording"
+msgstr "لا يتم التسجيل"
+
+#: .\safeNowApp\templates\create_case.html:272
+msgid "Submit Case"
+msgstr "إرسال البلاغ"
+
+#: .\safeNowApp\templates\create_case.html:276
+#: .\safeNowApp\templates\volunteer.html:196
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: .\safeNowApp\templates\my_cases.html:31
+msgid "Your Reported Cases"
+msgstr "أبلغ عن حالة"
+
+#: .\safeNowApp\templates\my_cases.html:34
+#: .\safeNowApp\templates\my_services.html:28
+#: .\safeNowApp\templates\success.html:46
+msgid "Back to Dashboard"
+msgstr "الصفحة الرئيسية"
+
+#: .\safeNowApp\templates\my_cases.html:39
+msgid "Your Cases"
+msgstr "بلاغاتي"
+
+#: .\safeNowApp\templates\my_cases.html:60
+#: .\safeNowApp\templates\my_services.html:44
+#: .\safeNowApp\templates\my_services.html:75
+#: .\safeNowApp\templates\volunteer.html:152
+msgid "Category"
+msgstr "الفئة"
+
+#: .\safeNowApp\templates\my_cases.html:61
+#: .\safeNowApp\templates\my_services.html:45
+#: .\safeNowApp\templates\my_services.html:76
+msgid "Created at"
+msgstr "إنشاء بلاغ"
+
+#: .\safeNowApp\templates\my_cases.html:67
+#: .\safeNowApp\templates\my_services.html:51
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#: .\safeNowApp\templates\my_cases.html:69
+msgid "Accepted"
+msgstr "مقبول"
+
+#: .\safeNowApp\templates\my_cases.html:71
+msgid "Rejected"
+msgstr "مرفوض"
+
+#: .\safeNowApp\templates\my_cases.html:97
+#: .\safeNowApp\templates\my_services.html:83
+msgid "You have no cases or you are not logged in."
+msgstr "لا توجد لديك حالات أو لم تقم بتسجيل الدخول"
+
+#: .\safeNowApp\templates\my_services.html:25
+#, fuzzy
+#| msgid "Volunteer Services"
+msgid "Your Services"
+msgstr "خدمات المتطوعين"
+
+#: .\safeNowApp\templates\my_services.html:34
+#, fuzzy
+#| msgid "Services"
+msgid "My Services"
+msgstr " الخدمات"
+
+#: .\safeNowApp\templates\my_services.html:65
+#, fuzzy
+#| msgid "Volunteer Services"
+msgid "Requested Services"
+msgstr "خدمات المتطوعين"
+
+#: .\safeNowApp\templates\partials\_services_list.html:73
+#: .\safeNowApp\templates\services.html:187
+#, fuzzy
+#| msgid "Submit Service"
+msgid "Request Service"
+msgstr "إرسال الخدمة"
+
+#: .\safeNowApp\templates\services.html:105
+msgid "Volunteer Services"
+msgstr "خدمات المتطوعين"
+
+#: .\safeNowApp\templates\services.html:106
+msgid "Find and rate volunteer services in your community"
+msgstr "ابحث وقيّم خدمات المتطوعين في مجتمعك"
+
+#: .\safeNowApp\templates\services.html:116
+#: .\safeNowApp\templates\volunteer.html:160
+msgid "Rescue"
+msgstr "إنقاذ"
+
+#: .\safeNowApp\templates\services.html:117
+#: .\safeNowApp\templates\volunteer.html:161
+msgid "Medical"
+msgstr "طبي"
+
+#: .\safeNowApp\templates\services.html:118
+#: .\safeNowApp\templates\volunteer.html:162
+msgid "Technical"
+msgstr "تقني"
+
+#: .\safeNowApp\templates\services.html:119
+#: .\safeNowApp\templates\volunteer.html:163
+msgid "Logistics"
+msgstr "لوجستي"
+
+#: .\safeNowApp\templates\success.html:10
+#: .\safeNowApp\templates\success.html:17
+msgid "Smart Rescue Assistant"
+msgstr "مساعد الإنقاذ الذكي"
+
+#: .\safeNowApp\templates\success.html:18
+msgid "AI guidance for your reported case"
+msgstr "توجيه الذكاء الاصطناعي لحالتك المبلّغ عنها"
+
+#: .\safeNowApp\templates\success.html:21
+msgid "Case Description"
+msgstr "وصف الحالة"
+
+#: .\safeNowApp\templates\success.html:38
+msgid "Send"
+msgstr "إرسال"
+
+#: .\safeNowApp\templates\volunteer.html:102
+msgid "Share your skills and help others in your community"
+msgstr "شارك مهاراتك وساعد الآخرين في مجتمعك"
+
+#: .\safeNowApp\templates\volunteer.html:106
+msgid "Volunteer Service Information"
+msgstr "معلومات خدمة المتطوع"
+
+#: .\safeNowApp\templates\volunteer.html:107
+msgid "Tell us about the service you'd like to provide"
+msgstr "أخبرنا عن الخدمة التي ترغب في تقديمها"
+
+#: .\safeNowApp\templates\volunteer.html:113
+msgid "Title"
+msgstr "العنوان"
+
+#: .\safeNowApp\templates\volunteer.html:126
+msgid "Location"
+msgstr "الموقع"
+
+#: .\safeNowApp\templates\volunteer.html:139
+msgid "Service Type"
+msgstr "نوع الخدمة"
+
+#: .\safeNowApp\templates\volunteer.html:169
+msgid "Availability"
+msgstr "التوفر"
+
+#: .\safeNowApp\templates\volunteer.html:182
+msgid "Service Description"
+msgstr "وصف الخدمة"
+
+#: .\safeNowApp\templates\volunteer.html:201
+msgid "Submit Service"
+msgstr "إرسال الخدمة"
+
+#: .\safeNowApp\templates\volunteer.html:211
+msgid "❤️ Thank you for volunteering!"
+msgstr "❤️ شكرًا لتطوعك!"
+
+#: .\safeNowApp\views.py:38
+msgid "Real-Time Reporting"
+msgstr "التبليغ الفوري"
+
+#: .\safeNowApp\views.py:40
+msgid ""
+"Submit cases with text, voice, or image uploads for comprehensive incident "
+"documentation."
+msgstr "قم بإرسال البلاغات بالنص أو الصوت أو الصور لتوثيق شامل للحوادث."
+
+#: .\safeNowApp\views.py:41
+msgid "AI Assistance"
+msgstr "مساعدة الذكاء الاصطناعي"
+
+#: .\safeNowApp\views.py:42
+msgid ""
+"Our AI translates voice to text and helps categorize cases for quick "
+"processing."
+msgstr ""
+"يقوم الذكاء الاصطناعي لدينا بتحويل الصوت إلى نص ويساعد في تصنيف البلاغات "
+"بسرعة."
+
+#: .\safeNowApp\views.py:43
+msgid "Quality Assurance"
+msgstr "ضمان الجودة"
+
+#: .\safeNowApp\views.py:44
+msgid ""
+"Rate and review services to maintain high standards of emergency response."
+msgstr "قيم وراجع الخدمات للحفاظ على معايير عالية للاستجابة الطارئة."
+
+#: .\safeNowApp\views.py:45
+msgid "Community Driven"
+msgstr "موجهة من المجتمع"
+
+#: .\safeNowApp\views.py:46
+msgid ""
+"Volunteers can register and contribute their skills to help those in need."
+msgstr "يمكن للمتطوعين التسجيل والمساهمة بمهاراتهم لمساعدة المحتاجين."
+
+#: .\safeNowApp\views.py:47
+msgid "User-Friendly Interface"
+msgstr "واجهة سهلة الاستخدام"
+
+#: .\safeNowApp\views.py:48
+msgid "Simple, intuitive design for easy navigation."
+msgstr "تصميم بسيط وسهل للتنقل."
+
+#: .\safeNowApp\views.py:49
+msgid "Multi-Language Support"
+msgstr "دعم متعدد اللغات"
+
+#: .\safeNowApp\views.py:50
+msgid "Accessible in multiple languages for wider usability."
+msgstr "متاح بعدة لغات لتوسيع إمكانية الاستخدام."
+
+#: .\safeNowApp\views.py:53
+msgid "Safety First"
+msgstr "السلامة أولاً"
+
+#: .\safeNowApp\views.py:54
+msgid ""
+"Every decision we make prioritizes the safety and well-being of workers and "
+"rescuers"
+msgstr "كل قرار نتخذه يعطي الأولوية لسلامة ورفاهية العاملين ومنفذي الإنقاذ"
+
+#: .\safeNowApp\views.py:55 .\safeNowApp\views.py:63
+msgid "Innovation"
+msgstr "الموقع"
+
+#: .\safeNowApp\views.py:56
+msgid ""
+"Leveraging cutting-edge technology to improve emergency response capabilities"
+msgstr "الاستفادة من أحدث التقنيات لتحسين قدرات الاستجابة للطوارئ"
+
+#: .\safeNowApp\views.py:57
+msgid "Collaboration"
+msgstr "التعاون"
+
+#: .\safeNowApp\views.py:58
+msgid ""
+"Building strong partnerships between authorities, volunteers, and communities"
+msgstr "بناء شراكات قوية بين السلطات والمتطوعين والمجتمعات"
+
+#: .\safeNowApp\views.py:61
+msgid "Accessibility"
+msgstr "التوفر"
+
+#: .\safeNowApp\views.py:61
+msgid "Making emergency reporting easy for everyone, anywhere."
+msgstr "جعل الإبلاغ عن الحالات الطارئة سهلاً للجميع وفي أي مكان."
+
+#: .\safeNowApp\views.py:62
+msgid "Transparency"
+msgstr "الشفافية"
+
+#: .\safeNowApp\views.py:62
+msgid "Keeping users informed about the status of their reports."
+msgstr "املأ المعلومات حول الحالة التي ترغب في الإبلاغ عنها"
+
+#: .\safeNowApp\views.py:64
+msgid "Leveraging AI and smart technology to improve emergency services."
+msgstr "استخدام الذكاء الاصطناعي والتكنولوجيا الذكية لتحسين خدمات الطوارئ."
+
+#: .\safeNowApp\views.py:65
+msgid "Empathy"
+msgstr "التعاطف"
+
+#: .\safeNowApp\views.py:66
+msgid "Understanding the urgency of emergencies and prioritizing human life."
+msgstr "فهم أهمية الحالات الطارئة وإعطاء الأولوية لحياة الإنسان."
+
+#~ msgid "Rating"
+#~ msgstr "التقييم"
+
+#~ msgid "5.0 (18 rating)"
+#~ msgstr "5.0 (18 تقييم)"
+
+#~ msgid "Contact Volunteer"
+#~ msgstr "تواصل مع المتطوع"
+
+#~ msgid "🚨 Smart Rescue Assistant"
+#~ msgstr "🚨 مساعد الإنقاذ الذكي"
+
+#~ msgid "warning"
+#~ msgstr "تحذير"
+
+#, fuzzy
+#~| msgid "Location"
+#~ msgid "location_on"
+#~ msgstr "الموقع"
+
+#~ msgid "call"
+#~ msgstr "اتصال"
+
+#~ msgid "email"
+#~ msgstr "البريد الإلكتروني"
+
+#~ msgid ""
+#~ "Your service will help people in need. We'll review your submission and "
+#~ "add it to our volunteer directory."
+#~ msgstr ""
+#~ "ستساعد خدمتك الأشخاص المحتاجين. سنراجع طلبك ونضيفه إلى دليل المتطوعين "
+#~ "لدينا."

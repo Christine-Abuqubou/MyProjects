@@ -1,0 +1,219 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans Services %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=heart_arrow"/>
+
+    {% load static %}
+</head>
+<body class="bg-[##fafbfd]">
+     <nav class="bg-gradient-to-r from-red-500 to-pink-800 text-white shadow sticky top-0 z-50">
+  <div class=" mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center space-x-3">
+        <img src="{% static 'images/Logo.png' %}" alt="WAHA Logo" class="w-12 h-12 rounded-xl">
+        <a href="/dashboard" class="font-semibold text-2xl">{% trans "Smart Rescue" %}</a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex md:items-center md:space-x-5 text-lg">
+        <a href="/dashboard" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">home</span>
+          <span>{% trans "Dashboard" %}</span>
+        </a>
+        <a href="/create_case" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">add</span>
+          <span>{% trans "Create Case" %}</span>
+        </a>
+        {% if user.role == "volunteer" %}
+        <a href="/volunteer" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">volunteer_activism</span>
+          <span>{% trans "Volunteer" %}</span>
+        </a>
+        {% endif %}
+        <a href="{% url 'my_cases' %}" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">list</span>
+          <span>{% trans "My Cases" %}</span>
+        </a>
+        <a href="/services" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-symbols-outlined">heart_arrow</span>
+          <span>{% trans "Services" %}</span>
+        </a>
+
+        <!-- Language Dropdown -->
+            <div class="relative group language-menu" onmouseenter="initLanguageMenu()">
+          <button class="flex items-center space-x-1 hover:text-gray-300">
+            <span class="material-icons">language</span>
+            <span>{% trans "Language" %}</span>
+          </button>
+          <ul class="dropdown absolute left-0 mt-1 hidden group-hover:block bg-white text-black rounded shadow-lg w-40 z-10">
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="en">
+                <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-200">English</button>
+              </form>
+            </li>
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="ar">
+                <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-200">العربية</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+
+        <a href="{% url 'about' %}" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">info</span>
+          <span>{% trans "About Us" %}</span>
+        </a>
+        <a href="/logoutform" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">logout</span>
+          <span>{% trans "Logout" %}</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="focus:outline-none">
+          <span class="material-icons">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-gradient-to-r from-red-500 to-pink-800 text-white">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="/dashboard" class="block px-3 py-2 rounded hover:bg-red-600">Dashboard</a>
+      <a href="/create_case" class="block px-3 py-2 rounded hover:bg-red-600">Create Case</a>
+      {% if user.role == "volunteer" %}
+      <a href="/volunteer" class="block px-3 py-2 rounded hover:bg-red-600">Volunteer</a>
+      {% endif %}
+      <a href="{% url 'my_cases' %}" class="block px-3 py-2 rounded hover:bg-red-600">My Cases</a>
+      <a href="/services" class="block px-3 py-2 rounded hover:bg-red-600">Services</a>
+      <a href="{% url 'about' %}" class="block px-3 py-2 rounded hover:bg-red-600">About Us</a>
+      <a href="/logoutform" class="block px-3 py-2 rounded hover:bg-red-600">Logout</a>
+    </div>
+  </div>
+
+  <script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</nav>
+
+    <main class="w-85/100 relative mx-auto my-10">
+        {% if user.role == 'volunteer' %}
+        <a href="/my_services" class="absolute top-0 right-0 bg-red-400 text-white cursor-pointer p-2 rounded-lg">My Services</a>
+        {% endif %}
+        <h2 class="text-2xl font-semibold text-orange-600 mb-2">{% trans "Volunteer Services" %}</h2>
+        <p class="text-gray-500 mb-10">{% trans "Find and rate volunteer services in your community" %}</p>
+        <section class="flex justify-between items-center mt-4 gap-8">
+            <input type="text" placeholder="🔍 Search services..."
+                   name="search"
+                   class="border border-gray-300 rounded-lg px-4 py-2 flex-1 focus:ring-2 focus:ring-teal-500">
+            <div class="text-sm text-gray-600 space-x-4">
+
+                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded">
+                    <select name="category" id="">
+                    <option value="">{% trans "All Categories" %}</option>
+                    <option value="rescue">{% trans "Rescue" %}</option>
+                    <option value="medical">{% trans "Medical" %}</option>
+                    <option value="technical">{% trans "Technical" %}</option>
+                    <option value="logistics">{% trans "Logistics" %}</option>
+                    </select>
+                </span>
+            </div>
+        </section>
+        <div class="grid gir-cols-1 lg:grid-cols-3 gap-10 my-10 ">
+            {% for service in services %}
+            <div class="rounded-lg border-1 border-gray-400 p-4 pb-8">
+                <div class="flex justify-between">
+                    <div class="flex-col">
+                        <h2 class="text-base">{{service.owner.firstname}} {{service.owner.lastname}}</h2>
+                        <p class="mb-3 text-sm">{{service.category}}</p>
+                        <p class="bg-[#003247] w-fit text-white rounded-lg p-1 text-xs">{{service.category}}</p>
+                    </div>
+                    <div class="flex-col">
+                        <div class="flex flex-col items-start">
+
+                            {% if service.id in rated_service_ids %}
+
+                            <div class="flex space-x-1">
+                                {% for i in "12345" %}
+
+                                <span class="text-3xl {% if i|add:" 0" <= service.service_rating.all.0.rating %}text-yellow-400{% else %}text-gray-300{% endif %}">
+                                &#9733;
+                                </span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            <form action="/rate_a_service/{{service.id}}" method="post"
+                                  class="flex items-center space-x-2">
+                                {% csrf_token %}
+                                <input type="hidden" name="service_id" value="{{ service.id }}">
+                                <!-- Star buttons -->
+                                {% for i in "12345" %}
+                                <button type="button" class="star text-gray-300 text-3xl hover:text-yellow-400"
+                                        data-value="{{ i }}">&#9733;
+                                </button>
+                                {% endfor %}
+                                <input type="hidden" name="rating" value="0">
+                            </form>
+                            {% endif %}
+
+                        </div>
+
+                        <p class="text-xs text-gray-500">
+                            {{ service.avg_rating|default:0|floatformat:1 }} ⭐ ({{ service.total_ratings }} ratings)
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col space-y-3">
+                    <p class="text-base my-5">{{service.description}}</p>
+                    <div class="flex items-center space-x-1">
+                        <span class="material-icons text-xs">location_on</span>
+                        <p>{{service.location}}</p>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <span class="material-icons text-xs">call</span>
+                        <p>{{service.owner.phonenumber}}</p>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <span class="material-icons text-xs">email</span>
+                        <p>{{service.owner.email}}</p>
+                    </div>
+                </div>
+                {% if not user in service.requested_by.all %}
+                <form action="/request_service/{{service.id}}" method="post">
+                    {% csrf_token %}
+                    <button class="w-full bg-[#f17e46] cursor-pointer text-white rounded-xl p-2 mt-4 ">
+                        {% trans "Request Service" %}
+                    </button>
+                </form>
+                {% else %}
+                <p class="text-center w-full bg-[#f17e46] text-white rounded-xl p-2 mt-4 ">{{service.status}}
+                </p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'rating.js' %}"></script>
+    <script src="{% static 'service_search.js' %}"></script>
+</body>
+</html>

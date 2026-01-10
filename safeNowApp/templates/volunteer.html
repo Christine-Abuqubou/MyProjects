@@ -1,0 +1,244 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+
+<html lang="{{ LANGUAGE_CODE }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% trans "Volunteer" %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=heart_arrow"/>
+</head>
+
+<body class="bg-[##fafbfd]">
+
+     <nav class="bg-gradient-to-r from-red-500 to-pink-800 text-white shadow sticky top-0 z-50">
+  <div class=" mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center space-x-3">
+        <img src="{% static 'images/Logo.png' %}" alt="WAHA Logo" class="w-12 h-12 rounded-xl">
+        <a href="/dashboard" class="font-semibold text-2xl">{% trans "Smart Rescue" %}</a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex md:items-center md:space-x-5 text-lg">
+        <a href="/dashboard" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">home</span>
+          <span>{% trans "Dashboard" %}</span>
+        </a>
+        <a href="/create_case" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">add</span>
+          <span>{% trans "Create Case" %}</span>
+        </a>
+        {% if user.role == "volunteer" %}
+        <a href="/volunteer" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">volunteer_activism</span>
+          <span>{% trans "Volunteer" %}</span>
+        </a>
+        {% endif %}
+        <a href="{% url 'my_cases' %}" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">list</span>
+          <span>{% trans "My Cases" %}</span>
+        </a>
+        <a href="/services" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-symbols-outlined">heart_arrow</span>
+          <span>{% trans "Services" %}</span>
+        </a>
+
+        <!-- Language Dropdown -->
+            <div class="relative group language-menu" onmouseenter="initLanguageMenu()">
+          <button class="flex items-center space-x-1 hover:text-gray-300">
+            <span class="material-icons">language</span>
+            <span>{% trans "Language" %}</span>
+          </button>
+          <ul class="dropdown absolute left-0 mt-1 hidden group-hover:block bg-white text-black rounded shadow-lg w-40 z-10">
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="en">
+                <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-200">English</button>
+              </form>
+            </li>
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="ar">
+                <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-200">العربية</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+
+        <a href="{% url 'about' %}" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">info</span>
+          <span>{% trans "About Us" %}</span>
+        </a>
+        <a href="/logoutform" class="flex items-center space-x-1 hover:text-gray-300">
+          <span class="material-icons">logout</span>
+          <span>{% trans "Logout" %}</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="focus:outline-none">
+          <span class="material-icons">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-gradient-to-r from-red-500 to-pink-800 text-white">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="/dashboard" class="block px-3 py-2 rounded hover:bg-red-600">Dashboard</a>
+      <a href="/create_case" class="block px-3 py-2 rounded hover:bg-red-600">Create Case</a>
+      {% if user.role == "volunteer" %}
+      <a href="/volunteer" class="block px-3 py-2 rounded hover:bg-red-600">Volunteer</a>
+      {% endif %}
+      <a href="{% url 'my_cases' %}" class="block px-3 py-2 rounded hover:bg-red-600">My Cases</a>
+      <a href="/services" class="block px-3 py-2 rounded hover:bg-red-600">Services</a>
+      <a href="{% url 'about' %}" class="block px-3 py-2 rounded hover:bg-red-600">About Us</a>
+      <a href="/logoutform" class="block px-3 py-2 rounded hover:bg-red-600">Logout</a>
+    </div>
+  </div>
+
+  <script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</nav>
+
+    <div class="text-center mt-10">
+        <div class="text-5xl text-blue-500 mb-2">🤝</div>
+        <h1 class="text-2xl font-semibold">{% trans "Become a Volunteer" %}</h1>
+        <p class="text-gray-500">{% trans "Share your skills and help others in your community" %}</p>
+    </div>
+
+    <div class="max-w-2xl mx-auto bg-white mt-10 shadow rounded-lg p-8">
+        <h2 class="text-lg font-semibold mb-2">{% trans "Volunteer Service Information" %}</h2>
+        <p class="text-gray-500 mb-6"> {% trans "Tell us about the service you'd like to provide" %}</p>
+
+        <form action="{% url 'volunteer_service_submit' %}" method="post"
+              class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-md space-y-6">
+            {% csrf_token %}
+            <div>
+                <label for="title" class="block text-sm font-medium text-gray-700 mb-1">{% trans "Title" %}</label>
+                <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Moving, Cleaning..."
+                        class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500
+             focus:border-blue-500 focus:outline-none transition"
+                >
+            </div>
+
+            <div>
+                <label for="location" class="block text-sm font-medium text-gray-700 mb-1">
+                    {% trans "Location" %}</label>
+                <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="City, State"
+                        class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500
+             focus:border-blue-500 focus:outline-none transition"
+                >
+            </div>
+
+            <div>
+                <label for="service_type" class="block text-sm font-medium text-gray-700 mb-1">
+                    {% trans "Service Type" %}</label>
+                <input
+                        type="text"
+                        id="service_type"
+                        name="service_type"
+                        placeholder="Example: Medical Assistance, Technical Support..."
+                        class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500
+             focus:border-blue-500 focus:outline-none transition"
+                >
+            </div>
+
+            <div>
+                <label for="category" class="block text-sm font-medium text-gray-700 mb-1">
+                    {% trans "Category" %}</label>
+                <select
+                        id="category"
+                        name="category"
+                        class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500
+             focus:border-blue-500 focus:outline-none transition"
+                >
+                    <option value="">{% trans "Select a category" %}</option>
+                    <option value="rescue">{% trans "Rescue" %}</option>
+                    <option value="medical">{% trans "Medical" %}</option>
+                    <option value="technical">{% trans "Technical" %}</option>
+                    <option value="logistics">{% trans "Logistics" %}</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="availability" class="block text-sm font-medium text-gray-700 mb-1">
+                    {% trans "Availability" %}</label>
+                <input
+                        type="text"
+                        id="availability"
+                        name="availability"
+                        placeholder="Example: Weekends, Evenings, Full-time..."
+                        class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500
+             focus:border-blue-500 focus:outline-none transition"
+                >
+            </div>
+
+            <div>
+                <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                    {% trans "Service Description" %}</label>
+                <textarea
+                        id="description"
+                        name="description"
+                        rows="4"
+                        placeholder="Describe the service you offer..."
+                        class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500
+             focus:border-blue-500 focus:outline-none transition"
+                ></textarea>
+            </div>
+
+            <div class="flex justify-between mt-6">
+                <button type="reset"
+                        class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition">
+                    {% trans "Cancel" %}
+                </button>
+
+                <button type="submit"
+                        class="bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition">
+                    {% trans "Submit Service" %}
+                </button>
+
+            </div>
+
+        </form>
+
+
+        {% if success %}
+        <div class="bg-red-400 text-white p-3 rounded-md">
+            {% trans "❤️ Thank you for volunteering!" %}<br>
+            {% trans "Your service will help people in need. We'll review your submission and add it to our volunteer
+            directory." %}
+        </div>
+        {% endif %}
+
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+
+</body>
+
+</html>

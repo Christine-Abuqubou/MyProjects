@@ -1,0 +1,83 @@
+{% load i18n %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for service in services %}
+    <div class="rounded-lg border-1 border-gray-400 p-4 pb-8">
+        <div class="flex justify-between">
+            <div class="flex-col">
+                <h2 class="text-base">{{service.owner.firstname}} {{service.owner.lastname}}</h2>
+                <p class="mb-3 text-sm">{{service.category}}</p>
+                <p class="bg-[#003247] w-fit text-white rounded-lg p-1 text-xs">{{service.category}}</p>
+            </div>
+            <div class="flex-col">
+                <div class="flex flex-col items-start">
+
+                    {% if service.id in rated_service_ids %}
+
+                    <div class="flex space-x-1">
+                        {% for i in "12345" %}
+
+                        <span class="text-3xl {% if i|add:" 0" <= service.service_rating.all.0.rating %}text-yellow-400{% else %}text-gray-300{% endif %}">
+                        &#9733;
+                        </span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <form action="/rate_a_service/{{service.id}}" method="post"
+                          class="flex items-center space-x-2">
+                        {% csrf_token %}
+                        <input type="hidden" name="service_id" value="{{ service.id }}">
+                        <!-- Star buttons -->
+                        {% for i in "12345" %}
+                        <button type="button" class="star text-gray-300 text-3xl hover:text-yellow-400"
+                                data-value="{{ i }}">&#9733;
+                        </button>
+                        {% endfor %}
+                        <input type="hidden" name="rating" value="0">
+                    </form>
+                    {% endif %}
+
+                </div>
+
+                <p class="text-xs text-gray-500">
+                    {{ service.avg_rating|default:0|floatformat:1 }} ⭐ ({{ service.total_ratings }} ratings)
+                </p>
+            </div>
+        </div>
+        <div class="flex flex-col space-y-3">
+            <p class="text-base my-5">{{service.description}}</p>
+            <div class="flex items-center space-x-1">
+                <span class="material-icons text-xs">location_on</span>
+                <p>{{service.location}}</p>
+            </div>
+            <div class="flex items-center space-x-1">
+                <span class="material-icons text-xs">call</span>
+                <p>{{service.owner.phonenumber}}</p>
+            </div>
+            <div class="flex items-center space-x-1">
+                <span class="material-icons text-xs">email</span>
+                <p>{{service.owner.email}}</p>
+            </div>
+        </div>
+        {% if not user in service.requested_by.all %}
+        <form action="/request_service/{{service.id}}" method="post">
+            {% csrf_token %}
+            <button class="w-full bg-[#f17e46] cursor-pointer text-white rounded-xl p-2 mt-4 ">
+                {% trans "Request Service" %}
+            </button>
+        </form>
+        {% else %}
+        <p class="text-center w-full bg-[#f17e46] text-white rounded-xl p-2 mt-4 ">{{service.status}}
+        </p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>
